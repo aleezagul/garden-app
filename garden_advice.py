@@ -1,33 +1,25 @@
-# Gardening advice program (refactored into functions)
+# Gardening advice program with user input and dictionaries
 
-def get_season_advice(season):
-    if season == "summer":
-        return "Water your plants regularly and provide some shade.\n"
-    elif season == "winter":
-        return "Protect your plants from frost with covers.\n"
-    else:
-        return "No advice for this season.\n"
+# Advice dictionaries
+season_advice = {
+    "summer": "Water your plants regularly and provide some shade.\n",
+    "winter": "Protect your plants from frost with covers.\n"
+}
 
-
-def get_plant_advice(plant_type):
-    if plant_type == "flower":
-        return "Use fertiliser to encourage blooms."
-    elif plant_type == "vegetable":
-        return "Keep an eye out for pests!"
-    else:
-        return "No advice for this type of plant."
-
+plant_advice = {
+    "flower": "Use fertiliser to encourage blooms.",
+    "vegetable": "Keep an eye out for pests!"
+}
 
 def main():
-    # Hardcoded values still here (Input will be handled in Issue 2)
-    season = "summer"
-    plant_type = "flower"
+    # Get user input
+    season = input("Enter the season (summer/winter): ").lower()
+    plant_type = input("Enter the plant type (flower/vegetable): ").lower()
 
-    advice = ""
-    advice += get_season_advice(season)
-    advice += get_plant_advice(plant_type)
+    # Get advice from dictionaries, with defaults
+    advice = season_advice.get(season, "No advice for this season.\n")
+    advice += plant_advice.get(plant_type, "No advice for this type of plant.")
 
     print(advice)
-
 
 main()
